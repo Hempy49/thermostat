@@ -15,7 +15,7 @@ describe("Thermostat", function() {
   });
 
   it ('initializes with a medium-usage', function() {
-    expect(thermostat.usage).toEqual("medium-usage");
+    expect(thermostat.checkUsage()).toEqual("medium-usage");
   });
 
   describe('up', function() {
@@ -73,16 +73,14 @@ describe("Thermostat", function() {
     });
 
     it ('checks that the current energy usage is on medium', function() {
-      thermostat.checkUsage()
-      expect(thermostat.usage).toEqual("Medium-usage");
+      expect(thermostat.checkUsage()).toEqual("Medium-usage");
     });
 
     it ('checks that the current energy usage is on high', function() {
       [1,2,3,4,5].forEach(function(i) {
         thermostat.up();
       });
-      thermostat.checkUsage()
-      expect(thermostat.usage).toEqual("High-usage");
+      expect(thermostat.checkUsage()).toEqual("High-usage");
     });
   });
 });

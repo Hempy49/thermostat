@@ -22,6 +22,7 @@
   <script>
   $(document).ready(function(){
     var thermostat = new Thermostat();
+    $('#usage').attr('class',thermostat.getUsage());
     $('#temperature').text(thermostat.temperature);
     $('#usage').text(thermostat.usage);
     $('#powerSavingModeStatus').text(thermostat.powerSavingModeStatus);
@@ -29,15 +30,18 @@
       thermostat.up(); thermostat.checkUsage();
       $('#temperature').text(thermostat.temperature);
       $('#usage').text(thermostat.usage);
+      $('#usage').attr('class',thermostat.getUsage());
     })
     $('#down').on('click', function() {
       thermostat.down(); thermostat.checkUsage();
       $('#temperature').text(thermostat.temperature);
       $('#usage').text(thermostat.usage);
+      $('#usage').attr('class',thermostat.getUsage());
     })
     $('#reset').on('click', function() {
       thermostat.reset();
       $('#temperature').text(thermostat.temperature);
+      $('#usage').attr('class',thermostat.getUsage());
     })
     $('#power_saving_mode').on('click', function() {
       thermostat.switchPowerSavingMode();
@@ -79,13 +83,21 @@ h2 {
 p[id="temperature"] {
   font-size: 120px;
 }
-p[id="usage"] {
-  font-size: 50px;
-  color: red;
-}
 p[id="powerSavingModeStatus"] {
   font-size: 50px;
   color: blue;
+}
+.Low-usage{
+  color: green;
+  font-size: 50px;
+}
+.Medium-usage{
+  color: black;
+  font-size: 50px;
+}
+.High-usage{
+  color: red;
+  font-size: 50px;
 }
 </style>
 </html>

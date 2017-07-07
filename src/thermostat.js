@@ -47,3 +47,7 @@ Thermostat.prototype.checkUsage = function() {
     this.usage = "High-usage";
   }
 }
+
+Thermostat.prototype.getUsage = function () {
+  return this.usage;
+}
